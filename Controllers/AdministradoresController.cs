@@ -11,27 +11,27 @@ using EntityFrameworkPaginateCore;
 namespace api_desafio21dias.Controllers
 {
     [ApiController]
-    public class MateriaisController : ControllerBase
+    public class AdministradoresController : ControllerBase
     {
         private readonly DbContexto _context;
         private const int QUANTIDADE_POR_PAGINA = 3;
 
-        public MateriaisController(DbContexto context)
+        public AdministradoresController(DbContexto context)
         {
             _context = context;
         }
 
-        // GET: Materiais
+        // GET: Administradores
         [HttpGet]
-        [Route("/materiais")]
+        [Route("/administradores")]
         public async Task<IActionResult> Index(int page = 1)
         {
-            return StatusCode(200, await _context.Materiais.OrderBy(a => a.Id).PaginateAsync(page, QUANTIDADE_POR_PAGINA));
+            return StatusCode(200, await _context.Administradores.OrderBy(a => a.Id).PaginateAsync(page, QUANTIDADE_POR_PAGINA));
         }
 
-        // GET: materiais/5
+        // GET: administradores/5
         [HttpGet]
-        [Route("/materiais/{id}")]
+        [Route("/administradores/{id}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -39,45 +39,45 @@ namespace api_desafio21dias.Controllers
                 return NotFound();
             }
 
-            var material = await _context.Materiais
+            var administrador = await _context.Administradores
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (material == null)
+            if (administrador == null)
             {
                 return NotFound();
             }
-            return StatusCode(200, material);
+            return StatusCode(200, administrador);
         }
 
-        // POST: /materiais
+        // POST: /administradores
         [HttpPost]
-        [Route("/materiais")]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Matricula")] Material material)
+        [Route("/administradores")]
+        public async Task<IActionResult> Create(Administrador administrador)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(material);
+                _context.Add(administrador);
                 await _context.SaveChangesAsync();
-                return StatusCode(201, material);
+                return StatusCode(201, administrador);
             }
-            return StatusCode(201, material);
+            return StatusCode(201, administrador);
         }
 
-        // PUT: materiais/5
+        // PUT: administradores/5
         [HttpPut]
-        [Route("/materiais/{id}")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Matricula")] Material material)
+        [Route("/administradores/{id}")]
+        public async Task<IActionResult> Edit(int id, Administrador administrador)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    material.Id = id;
-                    _context.Update(material);
+                    administrador.Id = id;
+                    _context.Update(administrador);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MaterialExists(material.Id))
+                    if (!AdministradorExists(administrador.Id))
                     {
                         return NotFound();
                     }
@@ -86,29 +86,29 @@ namespace api_desafio21dias.Controllers
                         throw;
                     }
                 }
-                return StatusCode(200, material);
+                return StatusCode(200, administrador);
             }
-            return StatusCode(200, material);
+            return StatusCode(200, administrador);
         }
         
-        // DELETE: material/5
-        [HttpDelete] // , ActionName("Delete")
-        [Route("/materiais/{id}")]
+        // DELETE: administrador/5
+        [HttpDelete]
+        [Route("/administradores/{id}")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var material = await _context.Materiais.FindAsync(id);
-            if (material != null)
+            var administrador = await _context.Administradores.FindAsync(id);
+            if (administrador != null)
             {
-                _context.Materiais.Remove(material);
+                _context.Administradores.Remove(administrador);
             }
 
             await _context.SaveChangesAsync();
             return StatusCode(204);
         }
 
-        private bool MaterialExists(int id)
+        private bool AdministradorExists(int id)
         {
-            return _context.Materiais.Any(e => e.Id == id);
+            return _context.Administradores.Any(e => e.Id == id);
         }
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Eq8OQAjVT/wUW/aC6wYBeI64rifCiFPQczuGpq4OYC9xw/fIJr+pZtjd9OWiHeYfzHtqR92cyXBCp+xss+DAww==",
+  "dgSpecHash": "4jSqPnhIGN0sQrDlF9wS/RN0JpGSbIrvKeBy+S1h1ln8Q4e4WZtyGmNYDEIxhvfT+jj1OJfTiFTRD9y8h/lcdw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\aleja\\Desktop\\torneseumprogramador\\desafio21dias-dotnet\\api-desafio21dias-materiais\\api-desafio21dias.csproj",
+  "projectFilePath": "C:\\Users\\aleja\\Desktop\\torneseumprogramador\\desafio21dias-dotnet\\api-desafio21dias-administradores\\api-desafio21dias.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aleja\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\aleja\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

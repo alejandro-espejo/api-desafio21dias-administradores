@@ -5,7 +5,7 @@
 namespace api_desafio21dias.Migrations
 {
     /// <inheritdoc />
-    public partial class MateriaisAdd : Migration
+    public partial class AdministradoresAdd : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +17,8 @@ namespace api_desafio21dias.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     nome = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false),
-                    aluno_id = table.Column<int>(type: "int", nullable: false)
+                    email = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false),
+                    senha = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false)
                 },
                 constraints: table =>
                 {

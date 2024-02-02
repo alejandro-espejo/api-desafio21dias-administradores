@@ -12,7 +12,7 @@ namespace api_desafio21dias.ModelViews
             new 
             { 
                 Itens = new List<dynamic>() {
-                    new { Path = "/materiais" },
+                    new { Path = "/administradores" },
                 },
             }
         };

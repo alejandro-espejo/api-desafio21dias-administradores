@@ -11,8 +11,8 @@ using api_desafio21dias.Servicos;
 namespace api_desafio21dias.Migrations
 {
     [DbContext(typeof(DbContexto))]
-    [Migration("20240202150212_MateriaisAdd")]
-    partial class MateriaisAdd
+    [Migration("20240202174331_AdministradoresAdd")]
+    partial class AdministradoresAdd
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace api_desafio21dias.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("api_desafio21dias.Models.Material", b =>
+            modelBuilder.Entity("api_desafio21dias.Models.Administrador", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -33,15 +33,23 @@ namespace api_desafio21dias.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AlunoId")
-                        .HasColumnType("int")
-                        .HasColumnName("aluno_id");
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar")
+                        .HasColumnName("email");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("varchar")
                         .HasColumnName("nome");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar")
+                        .HasColumnName("senha");
 
                     b.HasKey("Id");
 
